@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmosis - Deep Knowledge Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="splashScreen">
+        <img src="/assets/IMG_7845.jpeg" alt="Osmosis Logo" class="splash-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2NjYyIvPjwvc3ZnPg=='">
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/assets/IMG_7845.jpeg" alt="Osmosis Logo" class="brand-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2NjYyIvPjwvc3ZnPg=='">
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-link active" id="navHome">Explore</button>
+                <button class="nav-link" id="navPaths">Paths</button>
+                <button class="secondary" id="journeyBtn">Journey</button>
+                <button class="secondary icon-btn" id="themeToggleBtn" title="Toggle Dark Mode">
+                    <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="primary icon-btn" id="profileBtn" title="Profile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="categoriesView" class="view active">
+            <h2>Choose a Domain</h2>
+            <p class="subtitle">Start with any topic. Dive deeper into connected ideas.</p>
+            <div class="categories-grid" id="categoriesGrid"></div>
+        </div>
+
+        <div id="subtopicsView" class="view">
+            <button class="back" id="backToCategories">← Back to Domains</button>
+            <h2 id="subtopicsTitle"></h2>
+            <p id="subtopicsDesc" class="subtitle"></p>
+            <div class="subtopics-grid" id="subtopicsGrid"></div>
+        </div>
+
+        <div id="pathsView" class="view">
+            <h2>Curated Paths</h2>
+            <p class="subtitle">Guided journeys connecting ideas across multiple disciplines.</p>
+            <div class="categories-grid" id="pathsGrid"></div>
+        </div>
+
+        <div id="pathDetailView" class="view">
+            <button class="back" id="backToPathsList">← Back to Paths</button>
+            <h2 id="pathTitle"></h2>
+            <p id="pathDesc" class="subtitle"></p>
+            <div class="path-steps" id="pathStepsContainer"></div>
+        </div>
+
+        <div id="profileView" class="view">
+            <button class="back" id="backFromProfile">← Back</button>
+            <h2>Your Profile</h2>
+            <p class="subtitle">Manage your identity.</p>
+            
+            <div class="profile-header glass-panel">
+                <div class="avatar" id="profileAvatar">U</div>
+                <div class="profile-info">
+                    <input type="text" id="profileName" placeholder="Your Name" class="annotation-input" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 8px; font-family: 'Outfit', sans-serif;">
+                    <textarea id="profileBio" placeholder="A bit about your intellectual journey..." class="reflection-input" style="min-height: 80px; font-family: 'Lora', serif;"></textarea>
+                    <button class="primary" id="saveProfileBtn">Save Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="journeyView" class="view">
+            <button class="back" id="backFromJourney">← Back to Explore</button>
+            <h2>Learning Journey</h2>
+            <p class="subtitle">A living map of your intellectual growth and interconnected ideas.</p>
+            
+            <div class="dashboard-layout">
+                <div class="dash-column map-column">
+                    <h3 class="dash-title">Knowledge Map</h3>
+                    <div id="knowledgeMapContainer" class="knowledge-nodes"></div>
+                </div>
+
+                <div class="dash-column timeline-column">
+                    <h3 class="dash-title">Growth Timeline</h3>
+                    <div id="journeyTimeline" class="timeline-container"></div>
+                </div>
+
+                <div class="dash-column insights-column">
+                    <h3 class="dash-title">Intelligence</h3>
+                    <div class="glass-panel insight-panel">
+                        <h4 class="insight-label">Mastery Status</h4>
+                        <p id="insightMastery" class="insight-value">Explore domains to build mastery.</p>
+                    </div>
+                    <div class="glass-panel insight-panel">
+                        <h4 class="insight-label">Key Insights</h4>
+                        <p id="insightConnections" class="insight-value">No cross-domain connections made yet.</p>
+                    </div>
+                    <div class="glass-panel insight-panel">
+                        <h4 class="insight-label">Momentum</h4>
+                        <p id="insightMomentum" class="insight-value">0 total interactions recorded.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="articleView" class="view">
+            <button class="back" id="backToPrevious">← Back</button>
+            
+            <div id="pathNavBar" class="path-nav-bar glass-panel" style="display: none;">
+                <div class="path-nav-info">
+                    <span class="path-nav-label">Current Path:</span>
+                    <span id="currentPathName" class="path-nav-title"></span>
+                    <span id="pathProgress" class="path-nav-progress"></span>
+                </div>
+                <div class="path-nav-controls">
+                    <button class="secondary" id="prevPathStepBtn">Previous</button>
+                    <button class="primary" id="nextPathStepBtn">Next Step</button>
+                </div>
+            </div>
+
+            <div class="article-header">
+                <h2 id="articleTitle"></h2>
+                <div class="article-meta">
+                    <span id="articleCategory" class="meta-tag" title="Back to Category" style="cursor: pointer;"></span>
+                    <span id="articleSubtopic" class="meta-tag"></span>
+                    <div class="difficulty-selector">
+                        <label>Depth</label>
+                        <button class="difficulty-btn active" data-level="intro">Intro</button>
+                        <button class="difficulty-btn" data-level="advanced">Advanced</button>
+                        <button class="difficulty-btn" data-level="scholar">Scholar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sources-panel glass-panel" id="sourcesPanel"></div>
+            
+            <div class="article-content highlightable glass-panel" id="articleContent"></div>
+
+            <div class="annotation-panel glass-panel">
+                <h3>Annotations</h3>
+                <p class="panel-desc" id="annotationWarning">Highlight text in the article above to annotate. Add your thoughts on interesting passages.</p>
+                <div class="annotations-list" id="annotationsList"></div>
+                <div class="input-group">
+                    <button class="secondary icon-btn" id="highlightBtn" title="Highlight selected text">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 10.5 16 7l3.5 3.5-3.5 3.5z"/><path d="M12.5 10.5 8 15H4v-4l4.5-4.5"/><path d="M20 20H4"/></svg>
+                    </button>
+                    <input type="text" id="annotationInput" class="annotation-input" placeholder="What's interesting about this passage?">
+                    <button class="primary" id="addAnnotationBtn">Save Note</button>
+                </div>
+            </div>
+
+            <div class="reflection-section glass-panel">
+                <h3>Your Thoughts</h3>
+                <p class="panel-desc">After reading, write freely about what you understood, questions you have, or how this connects to other ideas.</p>
+                <textarea id="reflectionInput" class="reflection-input" placeholder="What did you think about this article? What surprised you? What questions came up?"></textarea>
+                <button class="primary" id="saveReflectionBtn">Save Reflection</button>
+                <div class="reflection-history" id="reflectionHistory"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="sourceModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div id="sourceModalContent"></div>
+        </div>
+    </div>
+
+    <script src="./data-javascript/history.js"></script>
+    <script src="./data-javascript/philosophy.js"></script>
+    <script src="./data-javascript/neuroscience.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
